@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="PViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p22-IN-qOu">
+                                <rect key="frame" x="105" y="430" width="111" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="Rh1-f3-3ly"/>
+                                </constraints>
+                                <state key="normal" title="New Card">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newCardPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sGP-gX-s5c"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxi-L7-0U0">
+                                <rect key="frame" x="20" y="26" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ao9-be-6ef">
+                                <rect key="frame" x="20" y="49" width="280" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="6Ir-tQ-CSZ"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwv-qW-85N">
+                                <rect key="frame" x="20" y="169" width="280" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="kfi-2P-YCI"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cxi-L7-0U0" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="6" id="3Uu-uS-oyc"/>
+                            <constraint firstItem="xwv-qW-85N" firstAttribute="leading" secondItem="Ao9-be-6ef" secondAttribute="leading" id="4R1-Ed-6t7"/>
+                            <constraint firstAttribute="bottom" secondItem="p22-IN-qOu" secondAttribute="bottom" constant="20" symbolic="YES" id="6DG-tq-xJk"/>
+                            <constraint firstItem="Ao9-be-6ef" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="CnO-PG-z0v"/>
+                            <constraint firstItem="xwv-qW-85N" firstAttribute="centerX" secondItem="p22-IN-qOu" secondAttribute="centerX" id="DAg-Q3-K1N"/>
+                            <constraint firstItem="xwv-qW-85N" firstAttribute="trailing" secondItem="Ao9-be-6ef" secondAttribute="trailing" id="DiW-1H-ttp"/>
+                            <constraint firstItem="cxi-L7-0U0" firstAttribute="trailing" secondItem="Ao9-be-6ef" secondAttribute="trailing" id="NR1-yx-khj"/>
+                            <constraint firstItem="Ao9-be-6ef" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="49" id="Ol7-wm-gBL"/>
+                            <constraint firstItem="xwv-qW-85N" firstAttribute="top" secondItem="Ao9-be-6ef" secondAttribute="bottom" constant="8" symbolic="YES" id="VEJ-ij-0RH"/>
+                            <constraint firstItem="Ao9-be-6ef" firstAttribute="top" secondItem="cxi-L7-0U0" secondAttribute="bottom" constant="2" id="bPU-en-sfu"/>
+                            <constraint firstAttribute="trailing" secondItem="Ao9-be-6ef" secondAttribute="trailing" constant="20" symbolic="YES" id="knG-YW-9PH"/>
+                            <constraint firstItem="cxi-L7-0U0" firstAttribute="leading" secondItem="Ao9-be-6ef" secondAttribute="leading" id="o4b-eH-abE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardBody" destination="Ao9-be-6ef" id="14y-Cx-5Rw"/>
+                        <outlet property="cardHelp" destination="xwv-qW-85N" id="7qw-5b-DUE"/>
+                        <outlet property="cardTitle" destination="cxi-L7-0U0" id="jRD-2h-et2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

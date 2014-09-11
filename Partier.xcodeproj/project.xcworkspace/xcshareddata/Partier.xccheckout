@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FB78288E-A0FC-49BF-BBB1-178768BD4125</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Partier</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D146FE4E-CC59-46E5-9F9C-D20DADDE5C37</key>
+		<string>https://github.com/partier/edison.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Partier.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D146FE4E-CC59-46E5-9F9C-D20DADDE5C37</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/partier/edison.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D146FE4E-CC59-46E5-9F9C-D20DADDE5C37</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D146FE4E-CC59-46E5-9F9C-D20DADDE5C37</string>
+			<key>IDESourceControlWCCName</key>
+			<string>edison</string>
+		</dict>
+	</array>
+</dict>
+</plist>
