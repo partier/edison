@@ -12,6 +12,7 @@
 	IBOutlet UILabel *cardTitle;
 	IBOutlet UITextView *cardBody;
 	IBOutlet UITextView *cardHelp;
+    IBOutlet UIButton *requestButton;
 }
 
 - (IBAction)newCardPressed:(id)sender;

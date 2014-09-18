@@ -22,6 +22,7 @@
 		1EA70CD019C14358006DB4AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EA70CCE19C14358006DB4AF /* InfoPlist.strings */; };
 		1EA70CD219C14358006DB4AF /* PartierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA70CD119C14358006DB4AF /* PartierTests.m */; };
 		1EA70CDD19C14F0A006DB4AF /* PCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA70CDC19C14F0A006DB4AF /* PCard.m */; };
+		8AA2383A19CA8BBA00750527 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA2383919CA8BBA00750527 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		1EA70CD119C14358006DB4AF /* PartierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartierTests.m; sourceTree = "<group>"; };
 		1EA70CDB19C14F0A006DB4AF /* PCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCard.h; sourceTree = "<group>"; };
 		1EA70CDC19C14F0A006DB4AF /* PCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCard.m; sourceTree = "<group>"; };
+		8AA2383819CA8B5300750527 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		8AA2383919CA8BBA00750527 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				1EA70CAD19C14358006DB4AF /* Supporting Files */,
 				1EA70CDB19C14F0A006DB4AF /* PCard.h */,
 				1EA70CDC19C14F0A006DB4AF /* PCard.m */,
+				8AA2383819CA8B5300750527 /* Constants.h */,
+				8AA2383919CA8BBA00750527 /* Constants.m */,
 			);
 			path = Partier;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AA2383A19CA8BBA00750527 /* Constants.m in Sources */,
 				1EA70CDD19C14F0A006DB4AF /* PCard.m in Sources */,
 				1EA70CB319C14358006DB4AF /* main.m in Sources */,
 				1EA70CBD19C14358006DB4AF /* PViewController.m in Sources */,
