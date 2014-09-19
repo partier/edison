@@ -11,7 +11,24 @@
 @implementation PCard
 @synthesize title, body, help, type;
 
-- (id)init
+// Constructor from a dictionary populated via NSJSONSerialization
+- (id)initFromNSDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self)
+    {
+        title = [dict objectForKey:@"title"];
+        body  = [dict objectForKey:@"body"];
+        help  = [dict objectForKey:@"help"];
+        type  = [dict objectForKey:@"type"];
+        
+        // TODO: de-serialize isViewed if the server ever knows/cares
+        _isViewed = NO;
+    }
+    return self;
+}
+
+- (id)initSample
 {
 	self = [super init];
 	if (self)
@@ -22,10 +39,17 @@
 		title = [NSString stringWithFormat:@"Card %d", count];
 		body = [NSString stringWithFormat:@"Body text for card %d.", count];
 		help = [NSString stringWithFormat:@"Help text for card %d.", count];
+        type = @"Sample";
+        _isViewed = NO;
 		count++;
 	}
 	
 	return self;
+}
+
+- (void)setCardViewed
+{
+    _isViewed = YES;
 }
 
 @end

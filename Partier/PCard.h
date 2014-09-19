@@ -20,5 +20,10 @@
 @property (nonatomic, copy) NSString *body;
 @property (nonatomic, copy) NSString *help;
 @property (nonatomic, copy) NSString *type;
+@property (nonatomic, readonly) Boolean isViewed;
+
+- (id)initFromNSDictionary:(NSDictionary*)dict;
+- (id)initSample;
+- (void)setCardViewed;
 
 @end

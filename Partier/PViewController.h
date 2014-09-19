@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PCard.h"
+#import "Constants.h"
 
 @interface PViewController : UIViewController {
 	IBOutlet UILabel *cardTitle;
@@ -14,6 +16,8 @@
 	IBOutlet UITextView *cardHelp;
     IBOutlet UIButton *requestButton;
 }
+
+@property (nonatomic, readonly) PCard* card;
 
 - (IBAction)newCardPressed:(id)sender;
 

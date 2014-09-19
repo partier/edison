@@ -7,8 +7,6 @@
 //
 
 #import "PViewController.h"
-#import "PCard.h"
-#import "Constants.h"
 
 @interface PViewController () <NSURLConnectionDelegate>
 {
@@ -22,8 +20,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
-	
+    
+    // Generate sample card
+    if (_card == nil)
+    {
+        _card = [[PCard alloc] initSample];
+        [self renderCurrentCard];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,19 +39,7 @@
 
 - (IBAction)newCardPressed:(id)sender
 {
-	// TODO: Replace default constructor of PCard with one that accepts a JSON object.
-
     [self requestNewCard];
-    
-    /*
-	
-    PCard *newCard = [[PCard alloc] init];
-	
-	[cardTitle setText:newCard.title];
-	[cardBody setText:newCard.body];
-	[cardHelp setText:newCard.help];
-     
-    */
 }
 
 - (void)requestNewCard
@@ -82,18 +75,37 @@
 {
     if (cardData.length > 0)
     {
+        // Generate dictionary from JSON
+        NSError *e = nil;
         NSDictionary *cardParsedJSON = [NSJSONSerialization JSONObjectWithData:cardData
                                                          options:0
                                                            error:NULL];
+        if (!cardParsedJSON)
+        {
+            NSLog(@"Error parsing card JSON: %@", e);
+        }
+        else
+        {
+            // Set card, render
+            _card = [[PCard alloc] initFromNSDictionary:cardParsedJSON];
+            [self renderCurrentCard];
         
-        [cardTitle setText:[cardParsedJSON objectForKey:@"title"]];
-        [cardBody  setText:[cardParsedJSON objectForKey:@"body"]];
-        [cardHelp  setText:[cardParsedJSON objectForKey:@"help"]];
-        
-        // Re-Enable request button
-        requestButton.enabled = YES;
+            // Re-Enable request button
+            requestButton.enabled = YES;
+        }
     }
 }
 // end NSURLConnectionDelegate implementation
 
+- (void)renderCurrentCard
+{
+    if (_card != nil)
+    {
+        [cardTitle setText:_card.title];
+        [cardBody setText:_card.body];
+        [cardHelp setText:_card.help];
+        
+        [_card setCardViewed];
+    }
+}
 @end
