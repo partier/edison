@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E98A7D419F7792F00285EA4 /* PCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E98A7D319F7792F00285EA4 /* PCardViewController.m */; };
 		1EA70CA719C14358006DB4AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA70CA619C14358006DB4AF /* Foundation.framework */; };
 		1EA70CA919C14358006DB4AF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA70CA819C14358006DB4AF /* CoreGraphics.framework */; };
 		1EA70CAB19C14358006DB4AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA70CAA19C14358006DB4AF /* UIKit.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E98A7D219F7792F00285EA4 /* PCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCardViewController.h; sourceTree = "<group>"; };
+		1E98A7D319F7792F00285EA4 /* PCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCardViewController.m; sourceTree = "<group>"; };
 		1EA70CA319C14358006DB4AF /* Partier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Partier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA70CA619C14358006DB4AF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1EA70CA819C14358006DB4AF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +132,8 @@
 				1EA70CDC19C14F0A006DB4AF /* PCard.m */,
 				8AA2383819CA8B5300750527 /* Constants.h */,
 				8AA2383919CA8BBA00750527 /* Constants.m */,
+				1E98A7D219F7792F00285EA4 /* PCardViewController.h */,
+				1E98A7D319F7792F00285EA4 /* PCardViewController.m */,
 			);
 			path = Partier;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 				1EA70CDD19C14F0A006DB4AF /* PCard.m in Sources */,
 				1EA70CB319C14358006DB4AF /* main.m in Sources */,
 				1EA70CBD19C14358006DB4AF /* PViewController.m in Sources */,
+				1E98A7D419F7792F00285EA4 /* PCardViewController.m in Sources */,
 				1EA70CB719C14358006DB4AF /* PAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

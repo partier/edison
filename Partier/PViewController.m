@@ -21,14 +21,27 @@
 {
     [super viewDidLoad];
     
-	// Do any additional setup after loading the view, typically from a nib.
-    
     // Generate sample card
-    if (_card == nil)
-    {
-        _card = [[PCard alloc] initSample];
-        [self renderCurrentCard];
-    }
+	self.cards = [[NSMutableArray alloc] init];
+	[self.cards addObject:[[PCard alloc] initSample]];
+	[self.cards addObject:[[PCard alloc] initSample]];
+	[self.cards addObject:[[PCard alloc] initSample]];
+	
+	// Create page view controller
+	self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+	self.pageViewController.dataSource = self;
+	
+	self.currentIndex = 0;
+	PCardViewController *startingViewController = [self viewControllerAtIndex:0];
+	NSArray *viewControllers = @[startingViewController];
+	[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+	
+	// Change the size of page view controller
+	self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30);
+	
+	[self addChildViewController:_pageViewController];
+	[self.view addSubview:_pageViewController.view];
+	[self.pageViewController didMoveToParentViewController:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,9 +99,18 @@
         }
         else
         {
-            // Set card, render
-            _card = [[PCard alloc] initFromNSDictionary:cardParsedJSON];
-            [self renderCurrentCard];
+            // Add new card to the front of the list and jump to it.
+			PCard* newCard = [[PCard alloc] initFromNSDictionary:cardParsedJSON];
+			[self.cards insertObject:newCard atIndex:0];
+			
+			if ([self.cards count] > kMaximumCardCount)
+			{
+				[self.cards removeLastObject];
+			}
+			
+			PCardViewController *startingViewController = [self viewControllerAtIndex:0];
+			NSArray *viewControllers = @[startingViewController];
+			[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         
             // Re-Enable request button
             requestButton.enabled = YES;
@@ -97,15 +119,56 @@
 }
 // end NSURLConnectionDelegate implementation
 
-- (void)renderCurrentCard
+#pragma mark - Page View Controller Data Source
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    if (_card != nil)
-    {
-        [cardTitle setText:_card.title];
-        [cardBody setText:_card.body];
-        [cardHelp setText:_card.help];
-        
-        [_card setCardViewed];
-    }
+	NSUInteger index = ((PCardViewController*) viewController).cardIndex;
+	if ((index == 0) || (index == NSNotFound)) {
+		return nil;
+	}
+	
+	index--;
+	
+	return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+	NSUInteger index = ((PCardViewController*) viewController).cardIndex;
+	
+	if (index == NSNotFound) {
+		return nil;
+	}
+	
+	index++;
+	if (index == [self.cards count]) {
+		return nil;
+	}
+	return [self viewControllerAtIndex:index];
+}
+
+- (PCardViewController *)viewControllerAtIndex:(NSUInteger)index
+{
+	if (([self.cards count] == 0) || (index >= [self.cards count])) {
+		return nil;
+	}
+	
+	// Create a new view controller and pass suitable data.
+	PCardViewController *cardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PCardViewController"];
+	cardViewController.card = (PCard*)[self.cards objectAtIndex:index];
+	cardViewController.cardIndex = index;
+	self.currentIndex = index;
+	
+	return cardViewController;
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+	return [self.cards count];
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+{
+	return 0;
 }
 @end

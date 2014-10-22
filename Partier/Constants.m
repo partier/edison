@@ -7,3 +7,4 @@
 //
 
 NSString *const kWebEndpointGetCard = @"https://partier-emily-dev.herokuapp.com/card";
+NSUInteger const kMaximumCardCount = 5;

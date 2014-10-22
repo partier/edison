@@ -7,3 +7,4 @@
 //
 
 FOUNDATION_EXPORT NSString *const kWebEndpointGetCard;
+FOUNDATION_EXPORT NSUInteger const kMaximumCardCount;
