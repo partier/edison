@@ -13,8 +13,7 @@
 @interface PCardViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UITextView *bodyTextView;
-@property (weak, nonatomic) IBOutlet UITextView *helpTextView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property NSUInteger cardIndex;
 @property PCard *card;
 @end

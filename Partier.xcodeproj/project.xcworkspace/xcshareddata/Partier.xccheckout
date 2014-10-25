@@ -14,7 +14,7 @@
 		<string>https://github.com/partier/edison.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Partier.xcodeproj/project.xcworkspace</string>
+	<string>Partier.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>207BE520B0D6B46FA39259C19932D5C6E3D029A7</key>

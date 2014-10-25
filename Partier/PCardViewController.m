@@ -25,8 +25,23 @@
 	}
 	
 	self.titleLabel.text = self.card.title;
-	self.bodyTextView.text = self.card.body;
-	self.helpTextView.text = self.card.help;
+	
+	// Create font descriptors to apply to card text.
+	UIFont* defaultFont = [UIFont systemFontOfSize:14.0];
+	UIFont* italicFont = [UIFont italicSystemFontOfSize:14.0];
+	
+	// Create the string and calculate some metrics.
+	NSString* cardText = [NSString stringWithFormat:@"%@\n\n%@", self.card.body, self.card.help];
+	NSUInteger bodyLength = self.card.body.length;
+	NSUInteger helpLength = self.card.help.length;
+	NSUInteger spacingLength = cardText.length - bodyLength - helpLength;
+	
+	NSMutableAttributedString* attributedCardText = [[NSMutableAttributedString alloc] initWithString:cardText];
+	// Apply italics to the range of characters starting from the first letter in the help text, counting two characters for the newlines.
+	[attributedCardText addAttribute:NSFontAttributeName value:defaultFont range:NSMakeRange(0, bodyLength)];
+	[attributedCardText addAttribute:NSFontAttributeName value:italicFont range:NSMakeRange(bodyLength + spacingLength, helpLength)];
+	
+	self.textView.attributedText = attributedCardText;
 }
 
 - (void)didReceiveMemoryWarning {
