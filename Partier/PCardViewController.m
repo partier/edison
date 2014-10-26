@@ -24,7 +24,30 @@
 		card = [[PCard alloc] initSample];
 	}
 	
-	self.titleLabel.text = self.card.title;
+	// HACK: Manually adding three spaces to get alignment right. This should be fixed properly.
+	self.titleLabel.text = [NSString stringWithFormat:@"   %@", self.card.title];
+	
+	// Custom colors.
+	UIColor* actingColor = [UIColor colorWithRed:0.0 green:.258823529 blue:.741176471 alpha:1.0];
+	UIColor* movingColor = [UIColor colorWithRed:.047058824 green:.411764706 blue:0.0 alpha:1.0];
+	UIColor* speakingColor = [UIColor colorWithRed:.321568627 green:0.0 blue:.411764706 alpha:1.0];
+	UIColor* daringColor = [UIColor colorWithRed:.678431373 green:.168627451 blue:0.0 alpha:1.0];
+	
+	if ([self.card.type  isEqual: @"acting"]) {
+			self.titleLabel.backgroundColor = actingColor;
+	}
+	else if ([self.card.type  isEqual: @"moving"]) {
+		self.titleLabel.backgroundColor = movingColor;
+	}
+	else if ([self.card.type  isEqual: @"speaking"]) {
+		self.titleLabel.backgroundColor = speakingColor;
+	}
+	else if ([self.card.type  isEqual: @"daring"]) {
+		self.titleLabel.backgroundColor = daringColor;
+	}
+	else {
+		self.titleLabel.backgroundColor = [UIColor darkGrayColor];
+	}
 	
 	// Create font descriptors to apply to card text.
 	UIFont* defaultFont = [UIFont systemFontOfSize:14.0];
