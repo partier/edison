@@ -24,12 +24,10 @@
     // Generate sample card
 	self.cards = [[NSMutableArray alloc] init];
 	PCard* c = [[PCard alloc] init];
-	c.title = @"High Five Robot";
-	c.body = @"You are a model HI-5 party enhancement robot. Your enhancement subroutines dictates that you identify targets in your proximity and enhance their experience by delivering a high five. The subroutine ends after you've high-fived all eligible targets.";
-	c.help = @"While all robots are governed by Asimov's three laws of robotics, the HI-5 is governed by an additional fourth law which states, \"A robot must keep the party going as long as doing so doesn't conflict with the First, Second or Third law.\" Also, here's a bunch of extra text to make sure that card scrolling works properly and feels correct. The user should be able to scroll the card so card text doesn't have to be limited at all.";
-	c.type = @"acting";
-	[self.cards addObject:[[PCard alloc] initSample]];
-	[self.cards addObject:[[PCard alloc] initSample]];
+	c.title = @"Welcome To Partier!";
+	c.body = @"Partier provides fun prompts to inject controlled chaos into any social gathering. By following the directions on the cards whenever there's a lull in the action, you'll not only breathe life into the party, but become the life of the party!";
+	c.help = @"Whenever you're ready for your first card, tap \"New Card.\" Our boy Rutherford will fetch one hot off the presses.";
+	c.type = @"default";
 	[self.cards addObject:c];
 	
 	// Create page view controller

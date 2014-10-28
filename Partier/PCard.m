@@ -19,8 +19,15 @@
     {
         title = [dict objectForKey:@"title"];
         body  = [dict objectForKey:@"body"];
-        help  = [dict objectForKey:@"help"];
-        type  = [dict objectForKey:@"type"];
+		if ([dict objectForKey:@"help"] == (id)[NSNull null])
+		{
+			help = @"";
+		}
+		else
+		{
+			help  = [dict objectForKey:@"help"];
+		}
+        type  = [[dict objectForKey:@"type"] lowercaseString];
         
         // TODO: de-serialize isViewed if the server ever knows/cares
         _isViewed = NO;
