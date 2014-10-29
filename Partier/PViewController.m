@@ -60,19 +60,48 @@
 
 - (void)requestNewCard
 {
-    // TODO: separate object to handle webservice calls?
-    NSURL *requestURL = [NSURL URLWithString: kWebEndpointGetCard];
-    NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
     
+    NSMutableURLRequest *request = [self buildCardRequest];
+
     cardData = [NSMutableData new];
     cardConnection = [NSURLConnection connectionWithRequest:request
                                                    delegate:self];
-    
     // Disable request button until request is finished
     requestButton.enabled = NO;
 }
 
-//NSURLConnectionDelegate implementation
+-(NSMutableURLRequest*)buildCardRequest
+{
+    // TODO: separate object to handle webservice calls?
+    NSURL *requestURL = [NSURL URLWithString: kWebEndpointGetCard];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
+    
+    // Build Header
+    NSString *encoded = [self getBase64IdFromVendorUUID];
+    [request addValue:encoded forHTTPHeaderField: kHeaderKeyAuthorization];
+    [request addValue:@"application/json; version=1" forHTTPHeaderField: kHeaderKeyAccept];
+    // TODO: use actual build number
+    [request addValue:@"Edison/1.0" forHTTPHeaderField: kHeaderKeyUserAgent];
+    
+    NSLog(@"Request Headers: %@", request.allHTTPHeaderFields);
+    
+    return request;
+}
+
+// Return encrypted UUID based off of vendor id
+-(NSString*)getBase64IdFromVendorUUID
+{
+    NSUUID* nsuuid = [[UIDevice currentDevice] identifierForVendor];
+    uuid_t uuid;
+    [nsuuid getUUIDBytes:uuid];
+    NSData* data = [NSData dataWithBytes:uuid length:16];
+    NSString* base64 = [data base64EncodedStringWithOptions:0];
+    
+    return base64;
+    
+}
+
+#pragma mark - NSURLConnectionDelegate implementation
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     // TODO: Handle failed requests
@@ -99,6 +128,10 @@
         if (!cardParsedJSON)
         {
             NSLog(@"Error parsing card JSON: %@", e);
+            
+            // Spit out whatever the server returned instead of our new card
+            NSString *error = [[NSString alloc] initWithData:cardData encoding:NSUTF8StringEncoding];
+            NSLog(@"%@", error);
         }
         else
         {
@@ -114,13 +147,13 @@
 			PCardViewController *startingViewController = [self viewControllerAtIndex:0];
 			NSArray *viewControllers = @[startingViewController];
 			[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        
-            // Re-Enable request button
-            requestButton.enabled = YES;
         }
+        
+        // Re-Enable request button
+        requestButton.enabled = YES;
     }
 }
-// end NSURLConnectionDelegate implementation
+
 
 #pragma mark - Page View Controller Data Source
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
