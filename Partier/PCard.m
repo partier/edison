@@ -9,7 +9,7 @@
 #import "PCard.h"
 
 @implementation PCard
-@synthesize title, body, help, type;
+@synthesize title, body, help, type, cardId;
 
 // Constructor from a dictionary populated via NSJSONSerialization
 - (id)initFromNSDictionary:(NSDictionary*)dict
@@ -28,6 +28,7 @@
 			help  = [dict objectForKey:@"help"];
 		}
         type  = [[dict objectForKey:@"type"] lowercaseString];
+		cardId = [dict objectForKey:@"id"];
         
         // TODO: de-serialize isViewed if the server ever knows/cares
         _isViewed = NO;

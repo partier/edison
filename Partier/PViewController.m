@@ -28,6 +28,7 @@
 	c.body = @"Partier provides fun prompts to inject controlled chaos into any social gathering. By following the directions on the cards whenever there's a lull in the action, you'll not only breathe life into the party, but become the life of the party!";
 	c.help = @"Whenever you're ready for your first card, tap \"New Card.\" Our boy Rutherford will fetch one hot off the presses.";
 	c.type = @"default";
+	c.cardId = @"";
 	[self.cards addObject:c];
 	
 	// Create page view controller
@@ -58,6 +59,8 @@
     [self requestNewCard];
 }
 
+#pragma mark - Networking
+
 - (void)requestNewCard
 {
     
@@ -73,7 +76,15 @@
 -(NSMutableURLRequest*)buildCardRequest
 {
     // TODO: separate object to handle webservice calls?
-    NSURL *requestURL = [NSURL URLWithString: kWebEndpointGetCard];
+	
+	/* Development Endpoint
+	NSURL *requestURL = [NSURL URLWithString: kWebEndpointGetCard];
+	//*/
+	
+	//* Halloween Endpoint
+	NSURL *requestURL = [NSURL URLWithString: kWebEndpointHalloweenGetCard];
+	//*/
+	
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
     
     // Build Header
@@ -88,7 +99,11 @@
     return request;
 }
 
-// Return encrypted UUID based off of vendor id
+/**
+ Get the device UUID.
+ 
+ @return Base64-encoded device UUID.
+ */
 -(NSString*)getBase64IdFromVendorUUID
 {
     NSUUID* nsuuid = [[UIDevice currentDevice] identifierForVendor];
@@ -135,18 +150,22 @@
         }
         else
         {
-            // Add new card to the front of the list and jump to it.
+            // If the card isn't a duplicate, add new card to the front of the list and jump to it.
 			PCard* newCard = [[PCard alloc] initFromNSDictionary:cardParsedJSON];
-			[self.cards insertObject:newCard atIndex:0];
-			
-			if ([self.cards count] > kMaximumCardCount)
+			NSLog(@"Comparing cards\n- %@\n- %@", newCard.cardId, ((PCard*)self.cards[0]).cardId);
+			if ([newCard.cardId compare:((PCard*)self.cards[0]).cardId])
 			{
-				[self.cards removeLastObject];
+				[self.cards insertObject:newCard atIndex:0];
+				
+				if ([self.cards count] > kMaximumCardCount)
+				{
+					[self.cards removeLastObject];
+				}
+				
+				PCardViewController *startingViewController = [self viewControllerAtIndex:0];
+				NSArray *viewControllers = @[startingViewController];
+				[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 			}
-			
-			PCardViewController *startingViewController = [self viewControllerAtIndex:0];
-			NSArray *viewControllers = @[startingViewController];
-			[self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         }
         
         // Re-Enable request button
@@ -156,6 +175,7 @@
 
 
 #pragma mark - Page View Controller Data Source
+
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
 	NSUInteger index = ((PCardViewController*) viewController).cardIndex;

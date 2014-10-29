@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Partier/PViewController.m"
-            timestampString = "436208912.868071"
+            timestampString = "436318984.703077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-connectionDidFinishLoading:"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-getBase64IdFromVendorUUID"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
