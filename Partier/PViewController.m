@@ -77,13 +77,9 @@
 {
     // TODO: separate object to handle webservice calls?
 	
-	/* Development Endpoint
+	// Development Endpoint
 	NSURL *requestURL = [NSURL URLWithString: kWebEndpointGetCard];
-	//*/
 	
-	//* Halloween Endpoint
-	NSURL *requestURL = [NSURL URLWithString: kWebEndpointHalloweenGetCard];
-	//*/
 	
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
     

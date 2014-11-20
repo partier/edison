@@ -6,9 +6,7 @@
 //  Copyright (c) 2014 The Game Studio. All rights reserved.
 //
 
-NSString *const kWebEndpointGetCard = @"https://partier-emily-dev.herokuapp.com/card";
-// TODO: Better way to handle this
-NSString *const kWebEndpointHalloweenGetCard = @"https://partier-halloween.herokuapp.com/card";
+NSString *const kWebEndpointGetCard = @"https://partier-imb.herokuapp.com/card";
 
 NSString *const kHeaderKeyAuthorization = @"Authorization";
 NSString *const kHeaderKeyAccept = @"Accept";
